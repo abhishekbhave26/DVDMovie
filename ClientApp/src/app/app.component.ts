@@ -13,4 +13,8 @@ export class AppComponent {
   get movie():Movie{
     return this.repo.movie;
   }
+  get movies():Movie[]{
+    return this.repo.movies;
+  }
+  
 }

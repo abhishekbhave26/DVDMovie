@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using DVDMovie.Models;
+using Newtonsoft.Json;
 
 namespace DVDMovie
 {
@@ -26,6 +27,13 @@ namespace DVDMovie
                 options.UseSqlServer(Configuration
                     ["Data:Movies:ConnectionString"]));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            
+            services.AddMvc().AddJsonOptions(opts=>{
+                opts.SerializerSettings.ReferenceLoopHandling
+                    =ReferenceLoopHandling.Serialize;
+                opts.SerializerSettings.NullValueHandling
+                    =NullValueHandling.Ignore;}
+                    );
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
