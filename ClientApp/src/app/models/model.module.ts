@@ -1,6 +1,9 @@
 import { NgModule } from "@angular/core";
 import { Repository } from "./repository";
- @NgModule({
-	providers: [Repository]
+import { Cart } from "./cart.model"; 
+
+@NgModule({
+	providers: [Repository,
+	Cart]
 })
 export class ModelModule { }
